@@ -1,0 +1,61 @@
+.footer {
+  background: #fff;
+  color: #333;
+  padding: 2rem 8%;
+  font-size: 0.95rem;
+}
+
+.footer h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.footer a {
+  display: block;
+  color: #444;
+  margin-bottom: 0.6rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer a:hover {
+  color: #00c389;
+}
+
+.footer-top,
+.footer-mid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.reviews .stars {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.4rem;
+}
+
+.logo {
+  font-weight: 700;
+  color: #00c389;
+}

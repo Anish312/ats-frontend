@@ -1,0 +1,77 @@
+.checklist-section {
+  background: linear-gradient(90deg, #000000 0%, #2d1b69 100%);
+  color: white;
+  padding: 4rem 8%;
+}
+
+.checklist-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.checklist-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.checklist-header p {
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+.checklist-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.checklist-text h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.checklist-text p {
+  color: #bbb;
+  max-width: 600px;
+}
+
+.checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  color: #111;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.card li svg {
+  color: #00c389;
+  width: 18px;
+  height: 18px;
+}

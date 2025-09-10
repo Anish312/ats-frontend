@@ -1,0 +1,157 @@
+/* General wrapper */
+.rr-wrapper {
+  padding: 24px;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Success box */
+.rr-container {
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+.rr-success-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #374151;
+}
+.rr-success-text {
+  margin-top: 8px;
+  color: #6b7280;
+}
+
+/* Header */
+.rr-header-title {
+  color: #2563eb;
+  font-weight: 600;
+}
+.rr-header-subtitle {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* Issues */
+.rr-issue-box {
+  background: #fff;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.rr-issue-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.rr-counter {
+  width: 32px;
+  height: 32px;
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rr-issue-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Synonyms */
+.rr-synonyms {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.rr-tag {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+.rr-tag-danger {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.rr-tag-synonym {
+  background: #f3f4f6;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.rr-tag-synonym:hover {
+  background: #e5e7eb;
+}
+.rr-synonyms-label {
+  font-size: 13px;
+  color: #6b7280;
+}
+.rr-no-synonyms {
+  font-size: 13px;
+  font-style: italic;
+  color: #9ca3af;
+}
+
+/* CTA */
+.rr-cta {
+  margin-top: 20px;
+  background: #f3e8ff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+.rr-cta-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 10px;
+}
+.rr-cta-btn {
+  padding: 10px 18px;
+  background: #7c3aed;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.rr-cta-btn:hover {
+  background: #6d28d9;
+}
+
+/* FAQ */
+.rr-faq {
+  margin-top: 20px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.rr-faq-title {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+.rr-faq-question {
+  color: #2563eb;
+  font-weight: 500;
+  cursor: pointer;
+}
+.rr-faq-answer {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #4b5563;
+}

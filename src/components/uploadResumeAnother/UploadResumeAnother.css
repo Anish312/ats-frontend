@@ -1,0 +1,66 @@
+.upload-section {
+  background: linear-gradient(90deg, #000000 0%, #3b267a 100%);
+  color: white;
+  padding: 2rem 8%;
+  text-align: center;
+}
+
+.upload-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.upload-header p {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 2rem;
+}
+
+.upload-box {
+  background: #2b2b2b;
+  border: 1px dashed #666;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.upload-icon {
+  width: 40px;
+  height: 40px;
+  color: #aaa;
+}
+
+.upload-btn {
+  background: #00c389;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.upload-btn:hover {
+  background: #00a877;
+}
+
+.upload-text {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.privacy {
+  font-size: 0.8rem;
+  background: #111;
+  color: #eee;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+}
