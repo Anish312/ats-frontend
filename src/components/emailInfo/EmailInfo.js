@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./EmailInfo.css";
+import { BASE_URL } from "../../constants/constants";
 
 function EmailInfo({ resumeText }) {
   const [emailInfo, setEmailInfo] = useState(null);
@@ -9,7 +10,7 @@ function EmailInfo({ resumeText }) {
   useEffect(() => {
     const fetchEmailInfo = async () => {
       try {
-        const res = await axios.post("/contact-info", {
+        const res = await axios.post(`${BASE_URL}/contact-info`, {
           text: resumeText,
         });
         setEmailInfo(res.data.found?.email || null);

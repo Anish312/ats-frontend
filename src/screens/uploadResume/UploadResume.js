@@ -3,6 +3,7 @@ import "./UploadResume.css";
 import { ResumeContext } from "../../context/ResumeContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../constants/constants";
 
 function UploadResume() {
   const [loading, setLoading] = useState(false);
@@ -43,7 +44,7 @@ const handleUpload = async (e) => {
 
   try {
     // Replace with your backend URL
-    const res = await axios.post("http://localhost:4000/resume", formData, {
+    const res = await axios.post(`${BASE_URL}/resume`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
 

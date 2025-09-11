@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./SectionCheck.css";
+import { BASE_URL } from "../../constants/constants";
 
 function SectionCheck({ resumeText }) {
   const [sections, setSections] = useState([]);
@@ -12,7 +13,7 @@ function SectionCheck({ resumeText }) {
     const fetchSections = async () => {
       try {
         const res = await axios.post(
-          "/check-sections",
+          `${BASE_URL}/check-sections`,
           { text: resumeText }
         );
 

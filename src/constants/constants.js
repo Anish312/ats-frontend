@@ -1,0 +1,1 @@
+export  const BASE_URL= "https://ats-nestjs-backend.onrender.com"

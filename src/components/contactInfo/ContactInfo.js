@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ContactInfo.css";
 import image from "../../assets/images/chapter.png";
+import { BASE_URL } from "../../constants/constants";
 function ContactInfo({ resumeText }) {
   const [contactInfo, setContactInfo] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -9,7 +10,7 @@ function ContactInfo({ resumeText }) {
   useEffect(() => {
     const fetchContactInfo = async () => {
       try {
-        const res = await axios.post("/contact-info", {
+        const res = await axios.post(`${BASE_URL}/contact-info`, {
           text: resumeText,
         });
         console.log(res)

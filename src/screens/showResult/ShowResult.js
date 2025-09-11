@@ -12,6 +12,7 @@ import axios from "axios";
 import GrammarInfo from "../../components/grammarInfo/GrammarInfo";
 import RepetitionChecker from "../../components/repetitionChecker/RepetitionChecker";
 import Loader from "../../components/loader/Loader";
+import { BASE_URL } from "../../constants/constants";
 
 function ShowResult() {
   const { id } = useParams();
@@ -56,7 +57,7 @@ function ShowResult() {
 
   const fetchResume = async () => {
     try {
-      const res = await axios.post(`/resume`);
+      const res = await axios.post(`${BASE_URL}/resume`);
       if (!res.ok) throw new Error("Failed to fetch resume");
       const data = await res.json();
       const latestResume = data[data.length - 1];
@@ -70,7 +71,7 @@ function ShowResult() {
 
   const fetchEmailInfo = async (text) => {
     try {
-      const res = await axios.post("/contact-info", { text });
+      const res = await axios.post(`${BASE_URL}/contact-info`, { text });
       setEmailInfo(res.data || null);
     } catch (error) {
       console.error("Error fetching email info:", error);
@@ -79,7 +80,7 @@ function ShowResult() {
 
   const fetchCheckSection = async (text) => {
     try {
-      const res = await axios.post("/check-sections", { text });
+      const res = await axios.post(`${BASE_URL}/check-sections`, { text });
       setSectionData(res.data);
     } catch (error) {
       console.error("Error:", error);
@@ -88,7 +89,7 @@ function ShowResult() {
 
   const fetchCheckGrammar = async (words) => {
     try {
-      const res = await axios.post("/grammar/check", { words });
+      const res = await axios.post(`${BASE_URL}/grammar/check`, { words });
       setGrammarInfo(res.data);
     } catch (error) {
       console.error("Error:", error);
@@ -97,7 +98,7 @@ function ShowResult() {
 
   const checkRepetition = async (payloadText) => {
     try {
-      const res = await axios.post("/repetition/check", { text: payloadText });
+      const res = await axios.post(`${BASE_URL}/repetition/check`, { text: payloadText });
       console.log(res.dat)
       setRepetitionInfo(res.data || {});
     } catch (err) {

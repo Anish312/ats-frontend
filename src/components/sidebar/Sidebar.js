@@ -3,6 +3,7 @@ import ScoreGauge from "../scoreGauge/ScoreGauge";
 import Metrics from "../metrics/Metrics";
 import Keywords from "../keywords/Keywords";
 import axios from "axios";
+import { BASE_URL } from "../../constants/constants";
 
 function Sidebar({ resume , atsScore}) {
   const [showAllMissing, setShowAllMissing] = useState(false);
@@ -14,7 +15,7 @@ function Sidebar({ resume , atsScore}) {
   useEffect(() => {
     const fetchResume = async () => {
       try {
-        const res = await fetch(`/resume`);
+        const res = await fetch(`${BASE_URL}/resume`);
         if (!res.ok) throw new Error("Failed to fetch resume");
         const data = await res.json();
         setResumeData(data[data.length - 1]);

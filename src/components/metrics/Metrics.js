@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ResumeContext } from "../../context/ResumeContext";
 import axios from "axios";
+import { BASE_URL } from "../../constants/constants";
 
 function Metrics({ resume, resumeData }) {
     const { displayResume, resumeFile, analysis } = useContext(ResumeContext);
@@ -9,7 +10,7 @@ useEffect(() => {
   const fetchResume = async () => {
     try {
       const res = await axios.post(
-        "/check-sections",
+        `${BASE_URL}/check-sections`,
         { text: resumeData.extractedText }   // ✅ wrap in object
       );
       setSectionData(res.data);
