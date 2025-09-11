@@ -11,7 +11,7 @@ import Test from "./screens/Test";
 import axios from "axios";
 
 function App() {
-  axios.defaults.baseURL ="http://localhost:4000/";
+  axios.defaults.baseURL ="https://ats-nestjs-backend.onrender.com";
 
   return (
      <div className="app">
