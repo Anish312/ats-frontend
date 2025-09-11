@@ -56,7 +56,7 @@ function ShowResult() {
 
   const fetchResume = async () => {
     try {
-      const res = await fetch(`/resume`);
+      const res = await axios.post(`/resume`);
       if (!res.ok) throw new Error("Failed to fetch resume");
       const data = await res.json();
       const latestResume = data[data.length - 1];

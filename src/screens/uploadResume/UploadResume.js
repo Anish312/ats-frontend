@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import "./UploadResume.css";
 import { ResumeContext } from "../../context/ResumeContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function UploadResume() {
   const [loading, setLoading] = useState(false);
@@ -14,42 +15,48 @@ function UploadResume() {
     setAnimate(true);
   }, []);
 
-  const handleUpload = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+const handleUpload = async (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-    const selectedFile = e.target.resume.files[0];
-    if (!selectedFile || !["application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"].includes(selectedFile.type)) {
-      alert("Please upload a valid PDF or DOCX file");
-      setLoading(false);
-      return;
-    }
-
-    setResumeFile(selectedFile);
-
-    const jobDescription =
-      "We are seeking a highly skilled and motivated Full Stack Developer with strong expertise in React.js, Node.js, MySQL, Vue.js, and Nest.js to join our engineering team...";
-
-    const formData = new FormData();
-    formData.append("resume", selectedFile);
-    formData.append("jobDescription", jobDescription);
-
-    try {
-      const res = await fetch("/resume", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!res.ok) throw new Error("Upload failed");
-
-      const data = await res.json();
-      setAnalysis(data);
-      navigate("/result");
-    } catch (err) {
-      console.error("Upload failed", err);
-    }
+  const selectedFile = e.target.resume.files[0];
+  if (
+    !selectedFile ||
+    ![
+      "application/pdf",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ].includes(selectedFile.type)
+  ) {
+    alert("Please upload a valid PDF or DOCX file");
     setLoading(false);
-  };
+    return;
+  }
+
+  setResumeFile(selectedFile);
+
+  const jobDescription =
+    "We are seeking a highly skilled and motivated Full Stack Developer with strong expertise in React.js, Node.js, MySQL, Vue.js, and Nest.js to join our engineering team...";
+
+  const formData = new FormData();
+  formData.append("resume", selectedFile);
+  formData.append("jobDescription", jobDescription);
+
+  try {
+    // Replace with your backend URL
+    const res = await axios.post("http://localhost:4000/resume", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    // Axios response is in res.data
+    setAnalysis(res.data);
+    navigate("/result");
+  } catch (err) {
+    console.error("Upload failed", err);
+    alert("Upload failed. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="uploadResume-container">

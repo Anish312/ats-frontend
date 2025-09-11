@@ -11,6 +11,7 @@ import Test from "./screens/Test";
 import axios from "axios";
 
 function App() {
+  axios.defaults.baseURL ="http://localhost:4000/";
 
   return (
      <div className="app">
