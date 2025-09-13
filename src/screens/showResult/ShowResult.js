@@ -24,7 +24,7 @@ function ShowResult() {
   const [atsScore, setAtsScore] = useState(null);
   const [repetitionInfo, setRepetitionInfo] = useState(null);
 
-  const { displayResume, resumeFile, analysis } = useContext(ResumeContext);
+  const { analysis } = useContext(ResumeContext);
 
   // ✅ Load resume first
   useEffect(() => {
@@ -36,7 +36,7 @@ function ShowResult() {
     } else {
       fetchResume();
     }
-  }, [id]);
+  }, [id]); // removed "resume" to prevent infinite loop
 
   // ✅ Once resume is ready, fetch section + email info
   useEffect(() => {
@@ -57,13 +57,12 @@ function ShowResult() {
 
   const fetchResume = async () => {
     try {
-      const res = await axios.post(`${BASE_URL}/resume`);
-      if (!res.ok) throw new Error("Failed to fetch resume");
-      const data = await res.json();
+      const res = await axios.get(`${BASE_URL}/resume`);
+      const data = res.data;
       const latestResume = data[data.length - 1];
       setResume(latestResume);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error fetching resume:", error);
     } finally {
       setLoading(false);
     }
@@ -83,7 +82,7 @@ function ShowResult() {
       const res = await axios.post(`${BASE_URL}/check-sections`, { text });
       setSectionData(res.data);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error checking sections:", error);
     }
   };
 
@@ -92,14 +91,14 @@ function ShowResult() {
       const res = await axios.post(`${BASE_URL}/grammar/check`, { words });
       setGrammarInfo(res.data);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error checking grammar:", error);
     }
   };
 
   const checkRepetition = async (payloadText) => {
     try {
       const res = await axios.post(`${BASE_URL}/repetition/check`, { text: payloadText });
-      console.log(res.dat)
+      console.log(res.data);
       setRepetitionInfo(res.data || {});
     } catch (err) {
       console.error("Error checking repetition:", err);
@@ -124,31 +123,32 @@ function ShowResult() {
     setAtsScore(Number(score.toFixed(0)));
   }
 
-if (loading) return <Loader message="Fetching your resume..." />;
+  if (loading) return <Loader message="Fetching your resume..." />;
   if (!resume) return <p>No data found</p>;
 
   return (
     <div className="result-dashboard">
       <Sidebar resume={resume} atsScore={atsScore} />
       <main className="content">
-  <div className="content-card">
-    <h3>📄 ATS Parse Rate</h3>
-    <p>
-      An <strong>Applicant Tracking System (ATS)</strong> is used by
-      employers and recruiters to quickly scan job applications.
-    </p>
+        <div className="content-card">
+          <h3>📄 ATS Parse Rate</h3>
+          <p>
+            An <strong>Applicant Tracking System (ATS)</strong> is used by
+            employers and recruiters to quickly scan job applications.
+          </p>
 
-    <div className="progress">
-      <div
-        className="progress-bar"
-        style={{ width: `${atsScore ?? 0}%` }} // dynamically set width
-      ></div>
-    </div>
+          <div className="progress">
+            <div
+              className="progress-bar"
+              style={{ width: `${atsScore ?? 0}%` }}
+            ></div>
+          </div>
 
-    <p className="highlight">
-      ✅ We parsed {atsScore ?? 0}% of your resume successfully using an industry ATS.
-    </p>
-  </div>
+          <p className="highlight">
+            ✅ We parsed {atsScore ?? 0}% of your resume successfully using an
+            industry ATS.
+          </p>
+        </div>
 
         {resume && (
           <ResumePreview
@@ -156,10 +156,14 @@ if (loading) return <Loader message="Fetching your resume..." />;
           />
         )}
 
-        {resume?.extractedText && <SectionCheck resumeText={resume.extractedText} />}
-        {resume?.extractedText && <ContactInfo resumeText={resume.extractedText} />}
+        {resume?.extractedText && (
+          <SectionCheck resumeText={resume.extractedText} />
+        )}
+        {resume?.extractedText && (
+          <ContactInfo resumeText={resume.extractedText} />
+        )}
         {resume && <ScoreSection resume={resume} />}
-        
+
         {/* ✅ Repetition checker now safely rendered */}
         {repetitionInfo && (
           <RepetitionChecker

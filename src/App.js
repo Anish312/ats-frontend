@@ -8,10 +8,8 @@ import Home from "./screens/home/Home";
 import Header from "./components/resumeCheckerInfo/header/Header";
 import Footer from "./components/footer/Footer";
 import Test from "./screens/Test";
-import axios from "axios";
 
 function App() {
-  // axios.defaults.baseURL ="https://ats-nestjs-backend.onrender.com";
 
   return (
      <div className="app">
