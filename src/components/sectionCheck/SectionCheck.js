@@ -39,10 +39,9 @@ function SectionCheck({ resumeText }) {
 
   return (
     <div className="sections-container">
-      <h2 className="sections-title">SECTIONS</h2>
 
       <div className="essential-sections-card">
-        <h3>ESSENTIAL SECTIONS</h3>
+      <div className="contact-info-header">📇 ESSENTIAL SECTIONS</div>
 
         {loading ? (
           <p>Checking resume...</p>

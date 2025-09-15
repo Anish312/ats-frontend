@@ -4,7 +4,7 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <span className="logo-icon">∞</span> Anish Dev
+        <span className="logo-icon"></span> Anish Dev
       </div>
 
       <nav className="nav">

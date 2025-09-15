@@ -150,11 +150,11 @@ function ShowResult() {
           </p>
         </div>
 
-        {resume && (
+        {/* {resume && (
           <ResumePreview
             file={`data:${resume.mimetype};base64,${resume.pdfData}`}
           />
-        )}
+        )} */}
 
         {resume?.extractedText && (
           <SectionCheck resumeText={resume.extractedText} />

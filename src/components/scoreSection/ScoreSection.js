@@ -18,20 +18,20 @@ function ScoreSection({ resume }) {
           <p className="score-value">{resume.hybrid_score}</p>
         </div>
 
-        <div className="score-card">
+        {/* <div className="score-card">
           <p className="score-label">Similarity</p>
-          <p className="score-value">{resume.similarity}</p>
-        </div>
+          <p className="score-value">{resume.similarity.toFixed(2)}</p>
+        </div> */}
 
         <div className="score-card">
           <p className="score-label">Score (Raw)</p>
           <p className="score-value">{resume.score}</p>
         </div>
 
-        <div className="score-card">
+        {/* <div className="score-card">
           <p className="score-label">Phrase Score</p>
           <p className="score-value">{resume.percentage_score_phrases}</p>
-        </div>
+        </div> */}
 
         <div className="score-card">
           <p className="score-label">Weight Match %</p>

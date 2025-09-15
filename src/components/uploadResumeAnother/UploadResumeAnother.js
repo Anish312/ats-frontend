@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import "./UploadResumeAnother.css";
 import { UploadCloud } from "lucide-react";
 
-function UploadResumeAnother() {
+function UploadResumeAnother({ scrollToUpload }) {
   return (
     <section className="upload-section">
       <div className="upload-header">
@@ -13,7 +14,9 @@ function UploadResumeAnother() {
 
       <div className="upload-box">
         <UploadCloud className="upload-icon" />
-        <button className="upload-btn">Upload Your Resume</button>
+        <button className="upload-btn" onClick={scrollToUpload}>
+          Upload Your Resume
+        </button>
         <p className="upload-text">
           Drop your resume here or choose a file. <br />
           PDF & DOCX only. Max 2MB file size.

@@ -9,9 +9,8 @@ background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);  min-height
   align-items: center;
   justify-content: space-between;
   /* padding: 4rem 2rem; */
-  width: 80%;
   margin-top: -40px;
-  gap: 3rem;
+  gap: 4rem;
 }
 
 .uploadResume-left {
@@ -105,13 +104,24 @@ background-color: rgba(240, 240, 240, 0.3);
   flex: 1;
   display: flex;
   justify-content: center;
+  
+}
+.image-border {
+  display: inline-block;      
+  border: 7px solid transparent;
+  border-radius: 10px;       
+  padding: 4px;              
+  box-shadow: 0 0 25px #c0c0c0cc; /* less transparent */
+}
+.image-border img {
+  display: block;              /* remove inline spacing */
+  border-radius: 8px;          /* match radius if needed */
 }
 
 .uploadResume-right img {
   width: 100%;
-  max-width: 480px;
-  border-radius: 20px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  max-width: 580px;
+  border-radius: 8px;
 }
 
 /* 📱 Responsive */
@@ -187,4 +197,87 @@ background-color: rgba(240, 240, 240, 0.3);
 
 .uploadResume-box button:active {
   transform: scale(0.95);
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 450px;
+  max-width: 90%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+  margin-bottom: 1rem;
+}
+
+.jd-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.modal-actions button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal-actions button:first-child {
+  background: #ddd;
+}
+
+.modal-actions button:last-child {
+  background: #007bff;
+  color: #fff;
+}
+.jd-option {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.jd-option:hover {
+  background: #f8f9fa;
+}
+
+.jd-preview {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.3rem 0 0 1.5rem;
 }
