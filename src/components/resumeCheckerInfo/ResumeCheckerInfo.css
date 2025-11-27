@@ -87,3 +87,10 @@
   justify-content: center;
   min-height: 400px; /* keeps space stable for letter */
 }
+
+@media (max-width: 1010px) {
+ 
+  .checker-left {
+    display: none;
+  }
+}

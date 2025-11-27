@@ -1,3 +1,4 @@
+/* MAIN HEADER */
 .header {
   display: flex;
   align-items: center;
@@ -10,6 +11,7 @@
   z-index: 1000;
 }
 
+/* LOGO */
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
@@ -25,6 +27,7 @@
   font-size: 1.8rem;
 }
 
+/* NAVIGATION DESKTOP */
 .nav {
   display: flex;
   align-items: center;
@@ -42,6 +45,7 @@
   color: #00c389;
 }
 
+/* BUTTON */
 .btn {
   background: #00c389;
   color: #fff;
@@ -55,4 +59,67 @@
 
 .btn:hover {
   background: #00a371;
+}
+
+/* ------------------------ */
+/* RESPONSIVE CODE */
+/* ------------------------ */
+
+/* TABLET VIEW */
+@media (max-width: 900px) {
+  .header {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav {
+    gap: 1.2rem;
+  }
+}
+
+/* MOBILE VIEW */
+@media (max-width: 700px) {
+  .header {
+    padding: 1rem 1.2rem;
+  }
+
+  /* Hide nav on small screens */
+  .nav {
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background: #fff;
+    width: 100%;
+    padding: 1rem 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+    /* Initially hidden */
+    display: none;
+  }
+
+  /* Toggle class to show menu */
+  .nav.active {
+    display: flex;
+  }
+
+  /* HIDE BUTTON text slightly smaller */
+  .btn {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Hamburger Icon */
+  .hamburger {
+    display: block;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #111;
+  }
+}
+
+/* HIDE hamburger on desktop */
+.hamburger {
+  display: none;
 }

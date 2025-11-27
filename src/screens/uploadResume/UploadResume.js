@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../constants/constants";
 import dashboard from "../../assets/images/Dashboard.png";
+import dummyResume from '../../assets/Anish Gehlot.pdf'
 
 function UploadResume() {
   const [loading, setLoading] = useState(false);
@@ -44,6 +45,41 @@ function UploadResume() {
     }
     setShowModal(true);
   };
+const handleDummyUpload = async () => {
+  try {
+    setLoading(true);
+
+    // Dummy JD
+    const dummyJD = "We are looking for a Junior Frontend Developer skilled in React.js, JavaScript, and UI development.";
+
+    // Fetch the dummy PDF file
+    const response = await fetch(dummyResume);
+    const blob = await response.blob();
+
+    const dummyFile = new File([blob], "dummy_resume.pdf", {
+      type: "application/pdf",
+    });
+
+    // Set context
+    setResumeFile(dummyFile);
+
+    const formData = new FormData();
+    formData.append("resume", dummyFile);
+    formData.append("jobDescription", dummyJD);
+
+    const res = await axios.post(`${BASE_URL}/resume`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    setAnalysis(res.data);
+    navigate("/result");
+  } catch (err) {
+    console.error("Dummy upload failed:", err);
+    alert("Dummy upload failed. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleUpload = async () => {
     if (!selectedJD && !customJD.trim()) {
@@ -107,8 +143,21 @@ function UploadResume() {
               {loading ? "Extracting..." : "Upload Your Resume"}
             </button>
             <p className="uploadResume-privacy">🔒 Privacy guaranteed</p>
+        <button
+          type="button"
+          className="dummy-btn"
+          onClick={handleDummyUpload}
+          disabled={loading}
+        >
+          Use Dummy Resume
+        </button>
+            
           </form>
         </div>
+            {/* <button type="submit" disabled={loading}>
+            {loading ? "Extracting..." : "Upload Your Resume"}
+          </button> */}
+
         </div>
         <div className={`uploadResume-right ${animate ? "animated" : ""}`}>
           <div className="image-border">
@@ -181,6 +230,8 @@ function UploadResume() {
           {loading ? "Uploading..." : "Confirm & Upload"}
         </button>
       </div>
+  
+
     </div>
   </div>
 )}
